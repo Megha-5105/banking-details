@@ -1,0 +1,229 @@
+#include <stdio.h>
+
+int reverse(int n)
+{
+
+	int rev=0;
+	while(n>0)
+	{
+		int rem=n%10;
+		rev=rev*10+rem;
+		n=n/10;
+	}
+	return rev;
+}
+void count(int n)
+{
+	int even_count=0;
+	int odd_count=0;
+	
+	while(n>0)
+	{
+		int rem=n%10;
+		if(rem%2==0)
+		{
+			even_count++;
+		}
+		else
+		{
+			odd_count++;
+		}
+		n=n/10;
+	}
+	printf("2.even count:%d\n odd count:%d\n",even_count,odd_count);
+}
+void evnodd(int n)
+{
+	int ev=0;
+	int od=0;
+	while(n>0)
+	{
+		int rem=n%10;
+		if(rem%2==0)
+		{
+			ev=ev*10+rem;
+		}
+		else
+		{
+			od=od*10+rem;
+		}
+		n=n/10;
+	}
+
+	printf("3.evno:%d\n  oddno:%d\n",reverse(ev),reverse(od));
+}
+int sum(int n)
+{
+	int sum=0;
+	while(n>0)
+	{
+		int rem=n%10;
+		sum=sum+rem;
+		n=n/10;
+
+	}
+	return sum;
+}
+void mul(int n)
+{
+	int mul=1;
+	while(n>0)
+	{
+		int rem=n%10;
+		mul=mul*rem;
+		n=n/10;
+	}
+	printf("6.product of digits:%d\n",mul);
+}
+int evn(int n)
+{
+	int ev=0;
+	while(n>0)
+	{
+		int rem=n%10;
+		if(rem%2==0)
+		{
+			ev=ev*10+rem;
+		}
+
+		n=n/10;
+	}
+	return reverse(ev);
+
+}
+int od(int n)
+{
+	int od=0;
+	while(n>0)
+	{
+		int rem=n%10;
+		if(rem%2==1)
+		{
+			od=od*10+rem;
+		}
+
+		n=n/10;
+	}
+	return reverse(od);
+
+}
+int zero(int n)
+{
+	int z=1;
+	while(n>0)
+	{
+		z=z*10;
+		n/=10;
+	}
+	return z;
+}
+
+int summation(int n)
+{
+int sum=0;
+while(n>0)
+{
+    sum=sum+n;
+    n=n-1;
+}
+return sum;
+
+}
+void summation_of_digits(int n)
+{
+    int sum=0;
+    int rem=0;
+    while(n>0)
+    {
+        rem=n%10;
+        sum=sum+summation(rem);
+        n=n/10;
+        
+    }
+    printf("7.summation of digits:%d\n",sum);
+}
+int fact(int n)
+{
+int mul=1;
+while(n>0)
+{
+    mul=mul*n;
+    n=n-1;
+}
+return mul;
+
+}
+void factorial_of_digits(int n)
+{
+    int sum=0;
+    int rem=0;
+    while(n>0)
+    {
+        rem=n%10;
+        sum=sum+fact(rem);
+        n=n/10;
+        
+    }
+    printf("8.factorial of digits:%d\n",sum);
+}
+int power(int b,int e)
+{
+    int p=1;
+    for(int i=0;i<e;i++)
+    {
+        p=p*b;
+    }
+    return p;
+}
+int square(int n)
+{
+    int sum=0;
+    while(n>0)
+    {
+        int rem=n%10;
+        
+        sum=sum+power(rem,2);
+        n=n/10;
+    }
+    return sum;
+}
+int power6(int n)
+{
+    int sum=0;
+    while(n>0)
+    {
+        int rem=n%10;
+        
+        sum=sum+power(rem,6);
+        n=n/10;
+    }
+    return sum;
+}
+int main()
+{
+	int n;
+	printf("enter n:");
+	scanf("%d",&n);
+
+	int res=reverse(n);
+	printf("1.reverse of number:%d\n",res);
+	count(n);
+	evnodd(n);
+	int even=evn(n);
+	printf("4.even numbers:%d\n",even);
+	int odd=od(n);
+	printf(" odd numbers:%d\n",odd);
+	int su=sum(n);
+	printf("5.sum of digits:%d\n",su);
+	mul(n);
+	summation(n);
+// 	summation_of_digits(n);
+// 	int factorial=fact(n);
+// 	printf("%d\n",factorial);
+    factorial_of_digits(n);
+    int sq=square(n);
+    printf("9.square of digits:%d\n",sq);
+    int p6=power6(n);
+    printf("10.power 6 of each digit:%d\n",p6);
+	return 0;
+}
