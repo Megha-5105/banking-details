@@ -1,0 +1,149 @@
+#include<stdio.h>
+int reverse(int n)
+{
+
+	int rev=0;
+	while(n>0)
+	{
+		int rem=n%10;
+		rev=rev*10+rem;
+		n=n/10;
+	}
+	return rev;
+}
+int dectobin(int n)
+{
+    int i=0;
+    int arr[40];
+    while(n>0)
+    {
+        arr[i]=n%2;
+        n=n/2;
+        i++;
+    }
+    printf("decimal to binary using array:");
+    for(i=i-1;i>=0;i--)
+    {
+        
+        printf("%d",arr[i]);
+    }
+    return 0;
+}
+long int dtob(int n)
+{
+
+    long int r=0,s=1;
+    while(n>0)
+    {
+        int rem=n%2;
+        r=rem*s+r;
+        s=s*10;
+        n=n/2;
+    }
+     return r;
+    
+}
+// int power(int b,int e)
+// {
+//     int p=1;
+//     for(int i=0;i<e;i++)
+//     {
+//         p=p*b;
+//     }
+//     return p;
+// }
+// int square(int n)
+// {
+//     int sum=0;
+//     while(n>0)
+//     {
+//         int rem=n%10;
+        
+//         sum=sum+power(rem,2);
+//         n=n/10;
+//     }
+//     return sum;
+// }
+int btod(int n)
+{
+    int r=0,s=1;
+    while(n>0)
+    {
+        int rem=n%1000;
+        int z=btod();
+        
+        s=s*10;
+        n=n/1000;
+    }
+       return r;
+    
+}
+int btoo(int n)
+{
+    int r=0,rem,s=1;
+    while(n>0)
+    {
+        rem=n%1000;
+        r=r*s+btod(rem);
+        n=n/1000;
+        s=s*10;
+    }
+    return r;
+}
+int otob(int n)
+{
+    int r=0,s=1;
+    while(n>0)
+    {
+        int rem=n%10;
+        if(rem>0)
+        {
+            printf("invalid input\n");
+            return 0;
+        }
+        int b=dtob(rem);
+        r=r+b*s;
+        n=n/10;
+        s=s*1000;
+    
+    }
+    return r;
+}
+// int btod()
+// {
+//     int r=0,s=1;
+//     while(n>0)
+//     {
+//         int rem=n%1000;
+        
+//     }
+// }
+int main()
+{
+    int n;
+    
+    printf("enter num:");
+    scanf("%d",&n);
+    dectobin(n);
+    int q=dtob(n);
+    printf("\ndecimal to binary without array:%d",q);
+    // int res=square(n);
+    // printf("%d",res);
+    // int m=101110;
+    // m=m/10;
+    // printf("%d",m);
+    printf("\nenter binary:");
+    scanf("%d",&n);
+    int s=btod(n);
+    printf("binary to decimal:%d\n",s);
+    int res=btoo(n);
+    printf("binary to octal:%d\n",res);
+    printf("enter octal number:");
+    scanf("%d",&n);
+    int o=otob(n);
+    printf("octal to binary:%d",o);
+    // int m=111110;
+    // printf("%d",btod(m/1000));
+    // printf("%d",btod(m%1000));
+    
+}
